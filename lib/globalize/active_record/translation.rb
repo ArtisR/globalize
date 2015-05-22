@@ -3,6 +3,7 @@ module Globalize
     class Translation < ::ActiveRecord::Base
 
       validates :locale, :presence => true
+      default_scope { order("locale asc, created_at desc") } 
 
       class << self
         # Sometimes ActiveRecord queries .table_exists? before the table name
